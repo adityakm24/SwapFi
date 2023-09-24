@@ -25,10 +25,10 @@
   .links ul {
     display: flex;
     list-style: none;
-    margin: 3px;
+    margin: 2px;
     padding: 35px;
     margin-left: -15px;
-  }
+    }
   
   .links li {
     margin-left: 6px;
@@ -37,23 +37,43 @@
     padding: 3px 8px;
     float: left;
     display: flex;
-    color: beige;
+    color: white;
+    font-weight: 250px;
+    transition: border-color 0.5s, background-color 0.5s, color 0.5s;
+    font-family: Lato;
   }
+    .links li:hover {
+      background-color: white;
+      border-color: transparent;
+      color: #444;
+      border-radius: 6px;
+    }
+        
+    .links li:hover ~ .bg-1 {
+      opacity: 0;
+    }
+    
+    .links li:hover ~ .bg-2 {
+      opacity: 0.3;
+    }
   
   .search {
     text-align: center;
     align-items: center;
     padding-left: 115px;
-    color:aliceblue;
+    color:#94bbe9;
   }
   
   .input {
-        border: 1px solid #ccc;
+        border: 1px solid #94bbe9;
+        border-width: 2px;
         background-color: transparent;
-        color: white;
+        color: #fc466b;
         padding: 13px;
-        transition: border-color 0.3s;
+        transition: border-color 0.4s;
         border-radius: 10px;
-        flex-grow: 1;
+        flex-grow: 2;
         width: 215%;
+        font-weight: 200px;
+        font-size: 14px;
   }

@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import Logo from "../public/logo-social.png";
 import styles from "../assets/styles/UnifiedNavbar.module.css";
+import { Lato } from 'next/font/google'
+
 
 const UnifiedNavbar: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");

@@ -3,7 +3,7 @@ import React from "react";
 import UnifiedNavbar from "./UnifiedNavbar";
 
 const Swap: React.FC = () => {
-  return <div></div>;
+  return <></>
 };
 
 export default Swap;
