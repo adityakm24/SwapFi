@@ -6,6 +6,7 @@ import NFTs from "../components/NFTs";
 import Pools from "../components/Pools";
 import Swap from "../components/Swap";
 import Tokens from "../components/Tokens";
+import UnifiedNavbar from "@/components/UnifiedNavbar";
 
 const MyApp = () => {
   return (

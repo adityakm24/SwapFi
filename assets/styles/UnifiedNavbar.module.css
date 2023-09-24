@@ -1,0 +1,59 @@
+.navbar {
+    display: flex;
+  }
+  
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    margin-right: 5px;
+    border-radius: 120%;
+    width: 100%;
+    padding-left: 8px;
+    padding-top: 3%;
+  }
+  
+  .links {
+    display: flex;
+    border-radius: 120%;
+    width: 55%;
+  }
+  
+  .links ul {
+    display: flex;
+    list-style: none;
+    margin: 3px;
+    padding: 35px;
+    margin-left: -15px;
+  }
+  
+  .links li {
+    margin-left: 6px;
+    list-style: none;
+    cursor: pointer;
+    padding: 3px 8px;
+    float: left;
+    display: flex;
+    color: beige;
+  }
+  
+  .search {
+    text-align: center;
+    align-items: center;
+    padding-left: 115px;
+    color:aliceblue;
+  }
+  
+  .input {
+        border: 1px solid #ccc;
+        background-color: transparent;
+        color: white;
+        padding: 13px;
+        transition: border-color 0.3s;
+        border-radius: 10px;
+        flex-grow: 1;
+        width: 215%;
+  }

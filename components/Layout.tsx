@@ -1,11 +1,13 @@
 import React, { PropsWithChildren } from "react";
-import Navbar from "./Navbar";
+import UnifiedNavbar from "./UnifiedNavbar"; // Import the UnifiedNavbar component
+
 const Layout = ({ children }: PropsWithChildren) => {
   return (
     <>
-      <Navbar />
+      <UnifiedNavbar />
       {children}
     </>
   );
 };
+
 export default Layout;
