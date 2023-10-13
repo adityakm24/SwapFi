@@ -70,7 +70,7 @@ const UnifiedNavbar: React.FC = () => {
           />
         </div>
 
-        <div>
+        <div className={styles.connectWallet}>
         <ConnectButton />
         </div>
       </div>
