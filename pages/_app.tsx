@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import UnifiedNavbar from "@/components/UnifiedNavbar";
 import { url } from "inspector";
 import "@rainbow-me/rainbowkit/styles.css";
+import { jsonRpcProvider } from '@wagmi/core/providers/jsonRpc'
 
 import '@rainbow-me/rainbowkit/styles.css';
 import {
@@ -12,22 +13,22 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import {
-  mainnet,
-  polygon,
-  optimism,
-  arbitrum,
-  base,
-  zora,
+  xdcTestnet,
+  xdc,
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
+import { http } from "viem";
 
 const { chains, publicClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, base, zora],
+  [xdc,xdcTestnet],
   [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID?? "Undefined" }),
-    publicProvider()
-  ]
+    jsonRpcProvider({
+      rpc: () => ({
+        http: "https://rpc.xinfin.network",
+      }),
+    }),
+  ],
 );
 
 const { connectors } = getDefaultWallets({
