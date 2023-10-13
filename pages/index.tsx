@@ -1,7 +1,6 @@
 // pages/index.js
 
 import React from "react";
-import Dashboard from "../components/Dashboard";
 import NFTs from "../components/NFTs";
 import Pools from "../components/Pools";
 import Swap from "../components/Swap";
