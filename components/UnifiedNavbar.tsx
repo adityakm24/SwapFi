@@ -15,16 +15,16 @@ const UnifiedNavbar = () => {
       </div>
       <ul className={styles.links}>
         <li>
-          <Link href="/">Home</Link>
+          <Link href="./swap">Swap</Link>
         </li>
         <li>
-          <Link href="/about">About</Link>
+          <Link href="./tokens" >Tokens</Link>
         </li>
         <li>
-          <Link href="/services">Services</Link>
+          <Link href="./nfts">NFTs</Link>
         </li>
         <li>
-          <Link href="/contact">Contact</Link>
+          <Link href="./pools">Pools</Link>
         </li>
       </ul>
       <div className={styles.search}>
