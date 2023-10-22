@@ -21,9 +21,6 @@ const UnifiedNavbar = () => {
           <Link href="./tokens" >Tokens</Link>
         </li>
         <li>
-          <Link href="./nfts">NFTs</Link>
-        </li>
-        <li>
           <Link href="./pools">Pools</Link>
         </li>
       </ul>
