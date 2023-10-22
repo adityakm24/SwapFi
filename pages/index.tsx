@@ -1,7 +1,6 @@
 // pages/index.js
 
 import React from "react";
-import NFTs from "../components/NFTs";
 import Pools from "../components/Pools";
 import Swap from "../components/Swap";
 import Tokens from "../components/Tokens";
@@ -12,7 +11,6 @@ const MyApp = () => {
     <div>
       <Swap />
       <Tokens />
-      <NFTs />
       <Pools />
     </div>
   );
