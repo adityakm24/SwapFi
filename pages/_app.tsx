@@ -32,7 +32,7 @@ const { chains, publicClient } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: 'My RainbowKit App',
+  appName: 'SwapFi',
   projectId: '0d14b50049d1cc2cd65249d04099fc27',
   chains
 });
