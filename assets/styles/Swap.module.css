@@ -1,27 +1,26 @@
-.swap-container {
+.swapcontainer {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 75vh;
 }
 
-.swap-panel {
-  background-color: #1e1e1e;
+.swappanel {
+  background-color: #01000f;
   padding: 25px;
-  border-radius: 10px;
-  width: 400px;
+  border-radius: 30px;
+  width: 30%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-
   overflow: auto;
 }
 
-.swap-header {
+.swapheader {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.swap-header button {
+.swapheader button {
   background: none;
   border: none;
   color: white;
@@ -29,13 +28,22 @@
   cursor: pointer;
 }
 
-.swap-section label {
+.swapsection {
+  background-color: #151515 !important;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.swapsection label {
   display: block;
-  color: white;
+  color: rgb(190, 190, 190);
+  font-size: 2vh;
+  font-weight: 500;
   margin-bottom: 10px;
 }
 
-.coin-modal {
+.coinmodal {
   position: absolute;
   width: 45vh;
   height: 45vh;
@@ -52,7 +60,7 @@
 
 }
 
-.coin-modal button {
+.coinmodal button {
   background-color: #333;
   padding: 10px;
   border: none;
@@ -63,7 +71,7 @@
 
 }
 
-.coin-modal input{
+.coinmodal input{
   background-color:transparent;
   color: aliceblue;
   border-radius: 5px;  
@@ -74,61 +82,103 @@
 }
 
 
-.connect-button {
+.swapButton {
   display: block;
-  width: 100%;
-  padding: 10px 30px;
+  width: 450px;
+  padding: 15px 30px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   color: white;
   background-color: purple;
   cursor: pointer;
   margin-bottom: 20px;
 }
 
-.receive-input button{
-  margin-bottom: 20px; 
-  padding: 10px 15px;
+.swapButtonDisb {
+  display: block;
+  width: 450px;
+  padding: 15px 30px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   color: white;
+  background-color: purple;
   cursor: pointer;
-  background-color: #333;
+  margin-bottom: 20px;
+  Opacity:0.8;
+  cursor:not-allowed;
 }
 
-.receive-input input {
+.receiveinput button{
+  display: inline;
+  padding: 10px 20px;
+  border: 1px solid #323232;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  background-color: #01000f;
+}
+
+.receiveinput input {
   width: 68%;
   margin-right: 20px;
   padding: 10px;
   border: 1px solid #444;
   border-radius: 8px;
   color: white;
-  background-color: #2a2a2a;
+  border: 0px;
+  background-color: #00000000;
   display:inline;
+  font-size: 5vh;
 }
 
-.pay-input button{
-  margin-bottom: 20px; 
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
+.receiveinput input:focus {
+  border: 0px solid #444;
+  outline: none;
+  background-color: #2a2a2a00;
+}
+
+.receiveinput input::-webkit-outer-spin-button,
+.receiveinput input::-webkit-inner-spin-button {
+        display: none;
+}
+
+
+.payinput button{
+  display: inline;
+  padding: 10px 20px;
+  border: 1px solid #323232;
+  border-radius: 20px;
   color: white;
   cursor: pointer;
-  background-color: #333;
+  background-color: #01000f;
 }
 
-.pay-input input {
+.payinput input {
+  display: inline;
   width: 68%;
   margin-right: 20px;
   padding: 10px;
-  border: 1px solid #444;
+  border: 0px;
   border-radius: 8px;
   color: white;
-  background-color: #2a2a2a;
+  background-color: #2a2a2a00;
   display:inline;
+  font-size: 5vh;
 }
 
-.close-button {
+.payinput input:focus {
+  border: 0px solid #444;
+  outline: none;
+  background-color: #2a2a2a00;
+}
+
+.payinput input::-webkit-outer-spin-button,
+.payinput input::-webkit-inner-spin-button {
+        display: none;
+}
+
+
+.closebutton {
   position: absolute;
   top: 19px;
   right: 14px;
