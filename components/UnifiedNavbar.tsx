@@ -8,6 +8,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useRouter } from "next/router";
 
 
+
 const UnifiedNavbar = () => {
   const router = useRouter();
 
@@ -30,12 +31,7 @@ const UnifiedNavbar = () => {
         </li>
       </ul>
       <div className={styles.button}>
-        <ConnectButton
-          accountStatus={{
-            smallScreen: "avatar",
-            largeScreen: "full",
-          }}
-        />
+      <ConnectButton showBalance={false} />
       </div>
     </nav>
   );
