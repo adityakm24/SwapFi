@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from "react";
-import UnifiedNavbar from "./UnifiedNavbar"; // Import the UnifiedNavbar component
+import UnifiedNavbar from "./UnifiedNavbar"; 
 
 const Layout = ({ children }: PropsWithChildren) => {
   return (

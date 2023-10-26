@@ -1,0 +1,58 @@
+.head{
+    font-size: large;
+    color: aliceblue;
+    padding-left: 18%;
+    margin-top: 7%;
+    display:inline-flex;
+}
+
+.controlsContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .newPositionButton {
+    background-color: brown;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 40px;
+    cursor: pointer;
+    margin-left: 210%;
+    white-space: nowrap;
+  }
+  
+  .customDropdown select {
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    margin-left: 550%;
+  }
+  
+  .customDropdown select:focus {
+    outline: none;
+    box-shadow: 0 0 2px #3498db;
+  }
+  
+
+  
+  .rectangle {
+    width: 900px; 
+    height: 250px; 
+    background-color: transparent;
+    margin: 0 auto; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 8px;
+  }
+
+  .centeredText {
+    text-align: center;
+    color: white;
+  }
