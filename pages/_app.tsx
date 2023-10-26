@@ -5,11 +5,11 @@ import UnifiedNavbar from "@/components/UnifiedNavbar";
 import { url } from "inspector";
 import "@rainbow-me/rainbowkit/styles.css";
 import { jsonRpcProvider } from '@wagmi/core/providers/jsonRpc'
-
 import '@rainbow-me/rainbowkit/styles.css';
 import {
   getDefaultWallets,
   RainbowKitProvider,
+  darkTheme
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import {
@@ -55,7 +55,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       }}
     >
           <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
+      <RainbowKitProvider theme={darkTheme()} chains={chains}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
