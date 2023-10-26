@@ -20,8 +20,8 @@
 
 .logo {
   flex: 1;
-  max-width: 200px; 
-  max-height: 200px;
+  max-width: 400px; 
+  max-height: 400px;
 }
 
 .links {
@@ -44,16 +44,16 @@
 .links li a {
   transition: 0.3s; 
   color: white; 
-  padding: 10px; 
+  padding: 7px; 
   border-radius: 5px; 
   text-decoration: none;
   align-items: center;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .links li a:hover {
-  background-color: rgba(255, 255, 255, 0.19);
-  border-radius: 15px;
+  background-color: rgba(182, 74, 221, 0.563);
+  border-radius: 10px;
   color: #ffffff;
   box-shadow: -2px 0px 10px -5px rgba(183,74,221,1);
   -webkit-box-shadow: -2px 0px 32px -2px rgba(182, 74, 221, 0.633);
@@ -96,6 +96,7 @@
   background-clip: padding-box, border-box;
   text-align: center;
   width: 70px;
+  padding: 15px; 
   border-radius: 10px;
 }
 .activeLink:hover {
