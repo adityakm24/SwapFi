@@ -10,9 +10,11 @@ const Pools: React.FC = () => {
   };
 
   return (
-    <div>
-      <div className={styles.head}>
-        <h1>Pools</h1>
+    <div className={styles.container}>
+      <div className={styles.headerContainer}>
+        <div className={styles.head}>
+          <h1>Pools</h1>
+        </div>
         <div className={styles.controlsContainer}>
           <div className={styles.customDropdown}>
             <select id="options" value={selectedOption} onChange={handleOptionChange}>

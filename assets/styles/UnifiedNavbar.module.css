@@ -18,7 +18,7 @@
 }
 
 .links {
-  flex: 1; /* Reduce the flex value for the links */
+  flex: 1; 
   display: flex;
   justify-content: flex-start;
   list-style: none;
@@ -31,15 +31,14 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-style: initial;
   padding-right: 10px;
-  text-decoration: none;
-
 }
 
 .links li a {
-  transition: 0.3s; /* Smooth transition for hover effects */
-  color: white; /* Default text color */
-  padding: 10px; /* Adding some padding to make the background hover effect more noticeable */
-  border-radius: 5px; /* Optional: To make the background hover effect rounded */
+  transition: 0.3s; 
+  color: white; 
+  padding: 10px; 
+  border-radius: 5px; 
+  text-decoration: none;
 }
 
 .links li a:hover {

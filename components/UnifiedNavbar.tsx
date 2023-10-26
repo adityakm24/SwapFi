@@ -11,7 +11,9 @@ const UnifiedNavbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
+        <Link href="./landing"> 
         <Image src={Logo} alt="Logo" width={50} height={50} />
+        </Link>
       </div>
       <ul className={styles.links}>
         <li>
