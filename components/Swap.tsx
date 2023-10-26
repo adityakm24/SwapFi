@@ -4,13 +4,13 @@ import { useAccount, useNetwork } from "wagmi";
 import UnifiedNavbar from "./UnifiedNavbar";
 import styles from "../assets/styles/Swap.module.css";
 import useIsMounted from "./hooks/useIsMounted";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClose, faGear, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClose, faGear, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Swap: React.FC = () => {
   const router = useRouter();
   const mounted = useIsMounted();
-    const account = useAccount();
+  const account = useAccount();
 
   const [payCoin, setPayCoin] = useState("ETH");
   const [receiveCoin, setReceiveCoin] = useState("Xdc");
@@ -29,14 +29,13 @@ const Swap: React.FC = () => {
 
   const availableCoins = ["ETH", "Xdc", "BTC", "ADA", "DOGE"];
 
-useEffect(() => {
-  setFilteredCoins(
-    availableCoins.filter((coin) =>
-      coin.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
-}, [searchTerm]);
-
+  useEffect(() => {
+    setFilteredCoins(
+      availableCoins.filter((coin) =>
+        coin.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  }, [searchTerm]);
 
   return (
     <div className={styles.swapcontainer}>
