@@ -36,7 +36,7 @@
   border: 1px solid #24233d;
   border-radius: 30px;
   width: 30%;
-  box-shadow: 0 0px 40px 0 #7b3f7b;
+  box-shadow: 0 0px 25px 0 rgb(91,39,236);
   overflow: auto;
 }
 
