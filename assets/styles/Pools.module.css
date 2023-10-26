@@ -1,12 +1,25 @@
-.head{
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin-top: 60px;
+  }
+  
+  .headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .head {
     font-size: large;
     color: aliceblue;
-    padding-left: 18%;
-    margin-top: 7%;
-    display:inline-flex;
-}
-
-.controlsContainer {
+    margin-right: 550px;
+  }
+  
+  .controlsContainer {
     display: flex;
     align-items: center;
   }
@@ -18,8 +31,7 @@
     border-radius: 5px;
     padding: 8px 40px;
     cursor: pointer;
-    margin-left: 210%;
-    white-space: nowrap;
+    margin-left: 10px;
   }
   
   .customDropdown select {
@@ -30,7 +42,6 @@
     border-radius: 5px;
     background-color: black;
     color: white;
-    margin-left: 550%;
   }
   
   .customDropdown select:focus {
@@ -38,21 +49,19 @@
     box-shadow: 0 0 2px #3498db;
   }
   
-
-  
   .rectangle {
-    width: 900px; 
-    height: 250px; 
+    width: 900px;
+    height: 250px;
     background-color: transparent;
-    margin: 0 auto; 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     border: 1px solid gray;
     border-radius: 8px;
   }
-
+  
   .centeredText {
     text-align: center;
     color: white;
   }
+  
