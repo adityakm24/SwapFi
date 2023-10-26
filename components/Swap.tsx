@@ -5,7 +5,7 @@ import UnifiedNavbar from "./UnifiedNavbar";
 import styles from "../assets/styles/Swap.module.css";
 import useIsMounted from "./hooks/useIsMounted";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose, faGear, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faClose, faGear, faSearch, faExchangeAlt } from "@fortawesome/free-solid-svg-icons"; // Import the swap icon.
 
 const Swap: React.FC = () => {
   const router = useRouter();
@@ -13,7 +13,9 @@ const Swap: React.FC = () => {
   const account = useAccount();
 
   const [payCoin, setPayCoin] = useState("ETH");
-  const [receiveCoin, setReceiveCoin] = useState("Xdc");
+  const [receiveCoin, setReceiveCoin] = useState("XDC");
+  const [payValue, setPayValue] = useState(0);
+  const [receiveValue, setReceiveValue] = useState(0);
   const [showPayModal, setShowPayModal] = useState(false);
   const [showReceiveModal, setShowReceiveModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -27,7 +29,16 @@ const Swap: React.FC = () => {
     setShowReceiveModal(false);
   };
 
-  const availableCoins = ["ETH", "Xdc", "BTC", "ADA", "DOGE"];
+  const availableCoins = ["ETH", "XDC", "BTC", "ADA", "DOGE"];
+
+  const swapCoins = () => {
+    const tempPayCoin = payCoin;
+    const tempPayValue = payValue;
+    setPayCoin(receiveCoin);
+    setReceiveCoin(tempPayCoin);
+    setPayValue(receiveValue);
+    setReceiveValue(tempPayValue);
+  };
 
   useEffect(() => {
     setFilteredCoins(
@@ -52,7 +63,12 @@ const Swap: React.FC = () => {
               <div className={styles.swapsection}>
                 <label>You pay</label>
                 <div className={styles.payinput}>
-                  <input type="number" placeholder="0" />
+                  <input
+                    type="number"
+                    placeholder="0"
+                    value={payValue}
+                    onChange={(e) => setPayValue(parseFloat(e.target.value))}
+                  />
                   <button
                     className={styles.paycoin}
                     onClick={() => setShowPayModal(true)}
@@ -64,10 +80,23 @@ const Swap: React.FC = () => {
               </div>
             </div>
             <div>
+              <button
+                className={styles.ExButton} // Add a style for the Swap button
+                onClick={swapCoins}
+              >
+                <FontAwesomeIcon icon={faExchangeAlt} /> 
+              </button>
+            </div>
+            <div>
               <div className={styles.swapsection}>
                 <label>You receive</label>
                 <div className={styles.receiveinput}>
-                  <input type="number" placeholder="0" inputMode="numeric" />
+                  <input
+                    type="number"
+                    placeholder="0"
+                    value={receiveValue}
+                    onChange={(e) => setReceiveValue(parseFloat(e.target.value))}
+                  />
                   <button onClick={() => setShowReceiveModal(true)}>
                     <span>{receiveCoin}</span>
                     <span>▼</span>
