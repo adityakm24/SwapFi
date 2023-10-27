@@ -28,6 +28,9 @@ const Swap: React.FC = () => {
     setShowPayModal(false);
     setShowReceiveModal(false);
   };
+  const iconStyle = {
+    transform: "rotate(90deg)",
+  };
 
   const availableCoins = ["ETH", "XDC", "BTC", "ADA", "DOGE"];
 
@@ -84,7 +87,7 @@ const Swap: React.FC = () => {
                 className={styles.ExButton} // Add a style for the Swap button
                 onClick={swapCoins}
               >
-                <FontAwesomeIcon icon={faExchangeAlt} /> 
+                <FontAwesomeIcon icon={faExchangeAlt} style={iconStyle} />
               </button>
             </div>
             <div>
@@ -95,7 +98,9 @@ const Swap: React.FC = () => {
                     type="number"
                     placeholder="0"
                     value={receiveValue}
-                    onChange={(e) => setReceiveValue(parseFloat(e.target.value))}
+                    onChange={(e) =>
+                      setReceiveValue(parseFloat(e.target.value))
+                    }
                   />
                   <button onClick={() => setShowReceiveModal(true)}>
                     <span>{receiveCoin}</span>

@@ -52,6 +52,7 @@
   color: white;
   font-size: 16px;
   cursor: pointer;
+  font-weight: 550 !important;
 }
 
 .swapsection {
@@ -266,7 +267,7 @@
 .ExButton {
   background: #323232;
   border: 2px;
-  border-radius: 50%;
+  border-radius: 100%;
   padding: 10px;
   font-size: 20px;
   color: white;
@@ -313,9 +314,12 @@
   .coinmodal input {
     width: 100%; /* Take the full width of the container */
   }
+  .ExButton {
+    top:50%;
+  }
 }
 
-/* Styles for screens larger than 14 inches (adjust the min-width as needed) */
+
 @media (min-width: 1367px) {
   .swappanel {
     width: 32%; /* Adjust the width as needed */
@@ -329,4 +333,8 @@
   .coinmodal input {
     width: 40vh;
   }
+  .ExButton {
+    top:51%;
+  }
+  
 }

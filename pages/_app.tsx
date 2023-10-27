@@ -46,10 +46,7 @@ const wagmiConfig = createConfig({
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div
-      style={{
-      }}
-    >
+    <div>
           <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider coolMode theme={darkTheme({
         accentColor: 'linear-gradient(13deg, rgba(91,39,236,0.8435968137254902) 0%, rgba(185,32,169,0.4710477941176471) 100%)',
