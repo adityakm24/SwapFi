@@ -13,24 +13,29 @@ const IndexPage = () => {
       });
     };
 
-    const createWidget = () => {
-      // Remove any existing widgets
-      const existingWidgets = document.querySelectorAll("#widget");
-      existingWidgets.forEach((widget) => widget.remove());
+const createWidget = () => {
+  // Remove any existing widgets
+  const existingWidgets = document.querySelectorAll("#widget");
+  existingWidgets.forEach((widget) => {
+    if (widget.parentNode) {
+      widget.parentNode.removeChild(widget);
+    }
+  });
 
-      // Create a new widget
-      const widgetElement = document.createElement("div");
-      widgetElement.id = "widget";
-      document.body.appendChild(widgetElement);
+  // Create a new widget
+  const widgetElement = document.createElement("div");
+  widgetElement.id = "widget";
+  document.body.appendChild(widgetElement);
 
-      // Initialize the widget
-      const onMetaWidgetInstance = new onMetaWidget({
-        elementId: "widget",
-        apiKey: "0c73fa12-8923-4740-8a14-cb78b178b12c",
-      });
-      onMetaWidgetInstance.init();
-      onMetaWidgetInstance.on("ALL_EVENTS", (status: any) => console.log(status));
-    };
+  // Initialize the widget
+  const onMetaWidgetInstance = new onMetaWidget({
+    elementId: "widget",
+    apiKey: "0c73fa12-8923-4740-8a14-cb78b178b12c",
+  });
+  onMetaWidgetInstance.init();
+  onMetaWidgetInstance.on("ALL_EVENTS", (status: any) => console.log(status));
+};
+
 
     loadWidget().then(createWidget);
   }, []); // Only runs on component mount (initial render)
