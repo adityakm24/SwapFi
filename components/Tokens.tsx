@@ -11,14 +11,16 @@ const Tokens = () => {
 []
   return (
     <div className={styles.header}>
-      <h1>Top tokens on swapfi</h1>
+      <h1>Top Tokens on SwapFi</h1>
       {isLoading && <p className={styles.loading}>Loading...</p>}
       <div className={styles.holds} style={{ border: "none", overflow: "hidden" }}>
         <iframe
           src="https://tokens-vercel.vercel.app/"
-          width="100%"
+          width="97.5%"
           height="600" // Set the height according to your requirements
           onLoad={handleIframeLoad}
+          style={{ borderRadius: "10px",marginRight: "2%"}}
+  
         />
       </div>
     </div>
