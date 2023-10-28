@@ -4,6 +4,7 @@
   align-items: center;
   height: 75vh;
   border: 0px solid #323232;
+  margin-top: 170px;
 }
 
 .boxs {
@@ -25,7 +26,6 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-
 .boxs > div {
   margin: 2px;
   flex: 2; /* Allow each item to take the full available width */
@@ -34,14 +34,16 @@
 .swappanel {
   background-color: #01000f;
   padding: 23px;
+  border: 1px solid #24233d;
   border-radius: 30px;
   width: 30%;
   box-shadow: 0 0px 25px 0 rgb(91,39,236);
   overflow: auto;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border:1px solid rgba(255, 255, 255, 0.18);
+}
+
+.heading {
+    cursor:default !important;
+    font-size: 20px!important;
 }
 
 .swapheader {
@@ -56,6 +58,7 @@
   color: white;
   font-size: 16px;
   cursor: pointer;
+  font-weight: 550 !important;
 }
 
 .swapsection {
@@ -63,7 +66,7 @@
   border-radius: 20px;
   padding: 20px;
   margin: 10px;
-  border: 1px solid #323232;
+  border: 2px solid #323232;
 }
 
 .swapsection label {
@@ -110,18 +113,32 @@
   background-color: #333333;
 }
 
+/* TwoSectionContainer.module.css */
+
+/* ... (previous styles) */
+
 .iconbtn {
   border: none;
   color: white;
   padding: 10px;
   cursor: pointer;
-  display: flex;
+  display: flex; /* Use Flexbox to make the contents appear on the same line */
+  align-items: center; /* Center vertically */
   font-size: 30px;
+  background-color: #ff0000;
+}
+
+.iconbtn p {
+  margin-right: 10px; 
+   background-color: #424242;
+   padding: 5px;
+   border-radius: 20px;
 }
 
 .iconbtn:hover {
-    background-color: #ff000000;
+  background-color: #5a5a5a00;
 }
+
 .coinmodal input {
   background-color: transparent;
   color: aliceblue;
@@ -151,8 +168,9 @@
   cursor: pointer;
   font-weight: bold;
   border-radius: 5px;
-
+  font-size: 20px;
 }
+
 
 .swapButton {
   display: block;
@@ -184,8 +202,10 @@
   margin-bottom: 20px;
   font-size: 1.2em;
   border-radius: 10px;
-  background: linear-gradient(13deg, rgba(91,39,236,0.8435968137254902) 0%, rgba(185,32,169,0.4710477941176471) 100%);
-  color: rgb(255, 255, 255);
+  background-color: #8EC5FC;
+background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+
+  color: rgb(213, 213, 213);
   border: 0px solid #19b1cc00;
   box-shadow: 0 0px 15px 0 #663566;
   Opacity:0.8;
@@ -199,11 +219,9 @@
 }
 
 .receiveinput button{
-  align-items: center; 
   display: inline;
-  width: 22%;
   padding: 10px 20px;
-  border: 1px solid #323232;
+  border: 2px solid #323232;
   border-radius: 20px;
   color: white;
   cursor: pointer;
@@ -236,11 +254,9 @@
 
 
 .payinput button{
-  align-items: center; 
   display: inline;
-  width: 22%;
   padding: 10px 20px;
-  border: 1px solid #323232;
+  border: 2px solid #323232;
   border-radius: 20px;
   color: white;
   cursor: pointer;
@@ -272,24 +288,25 @@
 }
 
 .ExButton {
-  background: #323232;
+  background: #32323200;
   border: 2px;
-  border-radius: 100%;
-  padding: 12px;
+  border-radius: 50%;
+  padding: 10px;
   font-size: 20px;
-  color: white;
+  color: #848484;
   cursor: pointer;
   position: absolute;
   left: 50%;
   top: 48.5%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0);
   opacity: 100%;
+  cursor:default;
 }
 
 .ExButton:hover {
-  background: linear-gradient(13deg, rgba(91, 39, 236, 0.92) 0%, rgba(185, 32, 169, 0.57) 100%);
+  background: linear-gradient(13deg, rgba(91, 39, 236, 0) 0%, rgba(185, 32, 170, 0) 100%);
 }
 
 .ExButton::before {
@@ -321,9 +338,12 @@
   .coinmodal input {
     width: 100%; /* Take the full width of the container */
   }
+  .ExButton {
+    top:55.3%;
+  }
 }
 
-/* Styles for screens larger than 14 inches (adjust the min-width as needed) */
+
 @media (min-width: 1367px) {
   .swappanel {
     width: 32%; /* Adjust the width as needed */
@@ -337,4 +357,143 @@
   .coinmodal input {
     width: 40vh;
   }
+  .ExButton {
+    top: 56.7%;
+  }
+  
+}
+
+.settingsDropdown {
+  position: absolute;
+  width: 50vh;
+  height: 35vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #131313;
+  font-weight: 500;
+  padding:  15px 20px; 
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
+    border: 2px solid rgb(33,33,33);
+}
+
+.settingsDropdown p {
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+  z-index: 999;
+}
+
+/* TwoSectionContainer.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column; /* Stack sections on top of each other */
+  align-items: center; /* Center sections horizontally */
+}
+
+.section {
+  padding: 10px;
+  width: 100%;
+  max-width: 300px; /* Adjust the max-width as needed */
+}
+
+.labelContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px; /* Add some space between labels and inputs */
+}
+
+.leftLabel {
+  text-align: left;
+  flex: 1;
+}
+
+.rightLabel {
+  text-align: right;
+  flex: 1;
+}
+
+.inputField {
+  width: 100%;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.inputField {
+  flex: 1;
+  direction: rtl;
+  border: 2px solid rgb(33,33,33);
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #131313;
+  color: white;
+  font-weight: 500;
+  appearance: textfield; /* Disable increment and decrement arrows */
+  padding-right: 30px; /* Add space for the text on the right */
+  width: calc(100% - 30px); /* Decrease the input width */
+}
+
+.inputText {
+  padding: 10px;
+  pointer-events: none;
+  background: transparent;
+  user-select: none;
+  color: white;
+}
+
+
+
+.inputContainer input::-webkit-inner-spin-button, 
+.inputContainer input::-webkit-outer-spin-button { 
+        display: none;
+}
+
+
+.txtarea {
+  background-color: #151515 !important;
+  border-radius: 20px;
+  color: white;
+ margin: 10px;
+  border: 2px solid #323232;
+}
+
+.txtarea p {
+ padding: 10px;
+ font-weight: 500;
+}
+
+.boxContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  border-top: 2px solid #323232;
+  border-radius: 20px;
+}
+
+.box {
+  border-radius: 10px;
+  padding: 3px;
+  flex: 0 0 30%; 
+  text-align: center;
+
+}
+
+.boxTextTop {
+  color: #ffffff; /* Top text color */
+  font-weight: 500;
+}
+
+.boxTextBottom {
+  color: #8f8f8f; /* Top text color */
+  font-weight: 500;
 }
