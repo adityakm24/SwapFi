@@ -39,9 +39,9 @@
   box-shadow: 0 0px 25px 0 rgb(91,39,236);
   overflow: auto;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border:1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border:2px solid rgba(255, 255, 255, 0.18);
 }
 
 .swapheader {
@@ -115,12 +115,21 @@
   color: white;
   padding: 10px;
   cursor: pointer;
-  display: flex;
+  display: flex; /* Use Flexbox to make the contents appear on the same line */
+  align-items: center; /* Center vertically */
   font-size: 30px;
+  background-color: #ff0000;
+}
+
+.iconbtn p {
+  margin-right: 10px; 
+   background-color: #424242;
+   padding: 5px;
+   border-radius: 20px;
 }
 
 .iconbtn:hover {
-    background-color: #ff000000;
+  background-color: #5a5a5a00;
 }
 .coinmodal input {
   background-color: transparent;
@@ -151,7 +160,7 @@
   cursor: pointer;
   font-weight: bold;
   border-radius: 5px;
-
+  font-size: 20px;
 }
 
 .swapButton {
@@ -337,4 +346,102 @@
   .coinmodal input {
     width: 40vh;
   }
+}
+
+.heading {
+    cursor:default !important;
+    font-size: 20px!important;
+}
+
+.settingsDropdown {
+  position: absolute;
+  width: 50vh;
+  height: 35vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #131313;
+  font-weight: 500;
+  padding:  15px 20px; 
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
+  border: 2px solid rgb(33,33,33);
+}
+
+.settingsDropdown p {
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+  z-index: 999;
+}
+
+.container {
+  display: flex;
+  flex-direction: column; /* Stack sections on top of each other */
+  align-items: center; /* Center sections horizontally */
+}
+
+.section {
+  padding: 10px;
+  width: 100%;
+  max-width: 300px; /* Adjust the max-width as needed */
+}
+
+.labelContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px; /* Add some space between labels and inputs */
+}
+
+.leftLabel {
+  text-align: left;
+  flex: 1;
+}
+
+.rightLabel {
+  text-align: right;
+  flex: 1;
+}
+
+.inputField {
+  width: 100%;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.inputField {
+  flex: 1;
+  direction: rtl;
+  border: 2px solid rgb(33,33,33);
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #131313;
+  color: white;
+  font-weight: 500;
+  appearance: textfield; /* Disable increment and decrement arrows */
+  padding-right: 30px; /* Add space for the text on the right */
+  width: calc(100% - 30px); /* Decrease the input width */
+}
+
+.inputText {
+  padding: 10px;
+  pointer-events: none;
+  background: transparent;
+  user-select: none;
+  color: white;
+}
+
+
+
+.inputContainer input::-webkit-inner-spin-button, 
+.inputContainer input::-webkit-outer-spin-button { 
+        display: none;
 }

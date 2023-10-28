@@ -36,8 +36,6 @@ const Swap: React.FC = () => {
     setTransactionDeadline(e.target.value);
   };
 
-    
-
   const closeModal = () => {
     setShowPayModal(false);
     setShowReceiveModal(false);
@@ -53,20 +51,20 @@ const Swap: React.FC = () => {
   const getIconForCoin = (coin: string) => {
     switch (coin) {
       case "ETH":
-        return "ethereum.png"; 
+        return "ethereum.png";
       case "BTC":
-        return "bitcoin.png"; 
+        return "bitcoin.png";
       case "ADA":
-        return "ada.png"; 
+        return "ada.png";
       case "DOGE":
-        return "dogecoin.png"; 
+        return "dogecoin.png";
       case "XDC":
         return "xdc.png";
       default:
         return "";
     }
   };
-  
+
   const openSettingsDropdown = () => {
     setShowSettingsDropdown(true);
   };
@@ -96,9 +94,9 @@ const Swap: React.FC = () => {
     <div className={styles.swapcontainer}>
       <div className={styles.swappanel}>
         <div className={styles.swapheader}>
-          <button className={styles.heading}>Add Liquidity</button>
+          <button className={styles.heading}>Add liquidity</button>
           <button className={styles.iconbtn}>
-            <p>{maxSlippage}% Slipage</p>
+            <p onClick={openSettingsDropdown}>{maxSlippage}% Slipage</p>
             <FontAwesomeIcon icon={faGear} onClick={openSettingsDropdown} />
           </button>
         </div>
@@ -173,11 +171,25 @@ const Swap: React.FC = () => {
                     className={styles.paycoin}
                     onClick={() => setShowPayModal(true)}
                   >
-                    <div style={{ display: "flex", alignItems: "center", marginLeft:"-10px"}}>
-    <img src={getIconForCoin(payCoin)} alt={payCoin} style={{ width: "30px", height: "30px", marginRight: "5px" }} />
-                    <span>{payCoin}</span>                    
-                    <span>▼</span>
-                  </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        marginLeft: "-10px",
+                      }}
+                    >
+                      <img
+                        src={getIconForCoin(payCoin)}
+                        alt={payCoin}
+                        style={{
+                          width: "30px",
+                          height: "30px",
+                          marginRight: "5px",
+                        }}
+                      />
+                      <span>{payCoin}</span>
+                      <span>▼</span>
+                    </div>
                   </button>
                 </div>
               </div>
@@ -200,11 +212,25 @@ const Swap: React.FC = () => {
                     onChange={(e) => settokenB(parseFloat(e.target.value))}
                   />
                   <button onClick={() => setShowReceiveModal(true)}>
-                  <div style={{ display: "flex", alignItems: "center", marginLeft:"-10px"}}>
-    <img src={getIconForCoin(receiveCoin)} alt={receiveCoin} style={{ width: "30px", height: "30px", marginRight: "5px" }} />
-                    <span>{receiveCoin}</span>                  
-                    <span>▼</span>
-                  </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        marginLeft: "-10px",
+                      }}
+                    >
+                      <img
+                        src={getIconForCoin(receiveCoin)}
+                        alt={receiveCoin}
+                        style={{
+                          width: "30px",
+                          height: "30px",
+                          marginRight: "5px",
+                        }}
+                      />
+                      <span>{receiveCoin}</span>
+                      <span>▼</span>
+                    </div>
                   </button>
                 </div>
               </div>
@@ -230,7 +256,9 @@ const Swap: React.FC = () => {
               </div>
             </div>
           </div>
-          <div><br></br></div>
+          <div>
+            <br></br>
+          </div>
           {mounted && account.isConnected ? (
             <button className={styles.swapButton}>Swap</button>
           ) : (
@@ -262,7 +290,15 @@ const Swap: React.FC = () => {
                     closeModal();
                   }}
                 >
-                  <img src={getIconForCoin(coin)} alt={coin} style={{ width: "20px", height: "20px" , marginRight:"10px"}} />
+                  <img
+                    src={getIconForCoin(coin)}
+                    alt={coin}
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                      marginRight: "10px",
+                    }}
+                  />
                   {coin}
                 </button>
               ))}
@@ -292,7 +328,15 @@ const Swap: React.FC = () => {
                     closeModal();
                   }}
                 >
-                  <img src={getIconForCoin(coin)} alt={coin} style={{ width: "20px", height: "20px" , marginRight:"10px"}} />
+                  <img
+                    src={getIconForCoin(coin)}
+                    alt={coin}
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                      marginRight: "10px",
+                    }}
+                  />
                   {coin}
                 </button>
               ))}
