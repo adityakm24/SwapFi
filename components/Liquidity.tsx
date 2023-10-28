@@ -262,6 +262,7 @@ const Swap: React.FC = () => {
                     closeModal();
                   }}
                 >
+                  <img src={getIconForCoin(coin)} alt={coin} style={{ width: "20px", height: "20px" , marginRight:"10px"}} />
                   {coin}
                 </button>
               ))}
@@ -291,6 +292,7 @@ const Swap: React.FC = () => {
                     closeModal();
                   }}
                 >
+                  <img src={getIconForCoin(coin)} alt={coin} style={{ width: "20px", height: "20px" , marginRight:"10px"}} />
                   {coin}
                 </button>
               ))}
