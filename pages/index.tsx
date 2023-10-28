@@ -13,6 +13,7 @@ const MyApp = () => {
       <Swap />
       <Tokens />
       <Pools />
+      <Indexpage/>
     </div>
   );
 };

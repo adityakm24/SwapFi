@@ -335,7 +335,7 @@
 /* Styles for screens larger than 14 inches (adjust the min-width as needed) */
 @media (min-width: 1367px) {
   .swappanel {
-    width: 32%; /* Adjust the width as needed */
+    width: 33%; /* Adjust the width as needed */
   }
 
   .coinmodal {
@@ -345,6 +345,10 @@
   
   .coinmodal input {
     width: 40vh;
+  }
+
+  .ExButton {
+    top:50%;
   }
 }
 

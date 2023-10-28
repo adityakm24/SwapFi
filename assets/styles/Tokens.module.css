@@ -9,6 +9,10 @@
   color: aliceblue;
   padding-left: 30px;
 }
+
+.holds {
+  background: 'url(../public/bitcoin.png) center center no-repeat'
+}
 .tokensContainer {
     color: #fff;
     justify-content: center;
@@ -76,4 +80,9 @@
   
   .searchBar {
     flex-grow: 1;
+  }
+
+  .loading{
+    text-align: center;
+    text-size-adjust: 30px;
   }
