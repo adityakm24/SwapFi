@@ -203,7 +203,7 @@
   font-size: 1.2em;
   border-radius: 10px;
   background-color: #8EC5FC;
-background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+background-image: linear-gradient(62deg, #7249b3 0%, #ab4ab0 100%);
 
   color: rgb(213, 213, 213);
   border: 0px solid #19b1cc00;
@@ -219,9 +219,11 @@ background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 }
 
 .receiveinput button{
+  align-items: center; 
   display: inline;
+  width: 22%;
   padding: 10px 20px;
-  border: 2px solid #323232;
+  border: 1px solid #323232;
   border-radius: 20px;
   color: white;
   cursor: pointer;
@@ -254,9 +256,11 @@ background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 
 
 .payinput button{
+  align-items: center; 
   display: inline;
+  width: 22%;
   padding: 10px 20px;
-  border: 2px solid #323232;
+  border: 1px solid #323232;
   border-radius: 20px;
   color: white;
   cursor: pointer;

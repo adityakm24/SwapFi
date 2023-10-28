@@ -50,6 +50,23 @@ const Swap: React.FC = () => {
 
   const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
 
+  const getIconForCoin = (coin: string) => {
+    switch (coin) {
+      case "ETH":
+        return "ethereum.png"; 
+      case "BTC":
+        return "bitcoin.png"; 
+      case "ADA":
+        return "ada.png"; 
+      case "DOGE":
+        return "dogecoin.png"; 
+      case "XDC":
+        return "xdc.png";
+      default:
+        return "";
+    }
+  };
+  
   const openSettingsDropdown = () => {
     setShowSettingsDropdown(true);
   };
@@ -156,8 +173,11 @@ const Swap: React.FC = () => {
                     className={styles.paycoin}
                     onClick={() => setShowPayModal(true)}
                   >
-                    <span>{payCoin}</span>
+                    <div style={{ display: "flex", alignItems: "center", marginLeft:"-10px"}}>
+    <img src={getIconForCoin(payCoin)} alt={payCoin} style={{ width: "30px", height: "30px", marginRight: "5px" }} />
+                    <span>{payCoin}</span>                    
                     <span>▼</span>
+                  </div>
                   </button>
                 </div>
               </div>
@@ -180,8 +200,11 @@ const Swap: React.FC = () => {
                     onChange={(e) => settokenB(parseFloat(e.target.value))}
                   />
                   <button onClick={() => setShowReceiveModal(true)}>
-                    <span>{receiveCoin}</span>
+                  <div style={{ display: "flex", alignItems: "center", marginLeft:"-10px"}}>
+    <img src={getIconForCoin(receiveCoin)} alt={receiveCoin} style={{ width: "30px", height: "30px", marginRight: "5px" }} />
+                    <span>{receiveCoin}</span>                  
                     <span>▼</span>
+                  </div>
                   </button>
                 </div>
               </div>
@@ -207,6 +230,7 @@ const Swap: React.FC = () => {
               </div>
             </div>
           </div>
+          <div><br></br></div>
           {mounted && account.isConnected ? (
             <button className={styles.swapButton}>Swap</button>
           ) : (

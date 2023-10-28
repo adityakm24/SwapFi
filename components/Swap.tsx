@@ -132,6 +132,7 @@ const Swap: React.FC = () => {
               </div>
             </div>
           </div>
+          <div><br></br></div>
           {mounted && account.isConnected ? (
             <button className={styles.swapButton}>Swap</button>
           ) : (
