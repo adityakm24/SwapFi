@@ -96,7 +96,7 @@ const Swap: React.FC = () => {
     <div className={styles.swapcontainer}>
       <div className={styles.swappanel}>
         <div className={styles.swapheader}>
-          <button className={styles.heading}>Add liquidity</button>
+          <button className={styles.heading}>Add Liquidity</button>
           <button className={styles.iconbtn}>
             <p>{maxSlippage}% Slipage</p>
             <FontAwesomeIcon icon={faGear} onClick={openSettingsDropdown} />

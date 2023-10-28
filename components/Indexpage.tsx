@@ -13,15 +13,27 @@ const IndexPage = () => {
       });
     };
 
-    loadWidget().then(() => {
-      const createWidget = new onMetaWidget({
+    const createWidget = () => {
+      // Remove any existing widgets
+      const existingWidgets = document.querySelectorAll("#widget");
+      existingWidgets.forEach((widget) => widget.remove());
+
+      // Create a new widget
+      const widgetElement = document.createElement("div");
+      widgetElement.id = "widget";
+      document.body.appendChild(widgetElement);
+
+      // Initialize the widget
+      const onMetaWidgetInstance = new onMetaWidget({
         elementId: "widget",
         apiKey: "0c73fa12-8923-4740-8a14-cb78b178b12c",
       });
-      createWidget.init();
-      createWidget.on("ALL_EVENTS", (status: any) => console.log(status));
-    });
-  }, []); // Ensure this code only runs on the client side
+      onMetaWidgetInstance.init();
+      onMetaWidgetInstance.on("ALL_EVENTS", (status: any) => console.log(status));
+    };
+
+    loadWidget().then(createWidget);
+  }, []); // Only runs on component mount (initial render)
 
   return (
     <div>
@@ -29,7 +41,6 @@ const IndexPage = () => {
         <title>SwapFi- Buy Crypto</title>
       </Head>
       <noscript>You need to enable JavaScript to run this app.</noscript>
-      <div id="root"></div>
       <div id="widget"></div>
     </div>
   );
