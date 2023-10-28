@@ -10,7 +10,8 @@ import {
   faGear,
   faSearch,
   faExchangeAlt,
-} from "@fortawesome/free-solid-svg-icons"; // Import the swap icon.
+} from "@fortawesome/free-solid-svg-icons";
+  import abi from "./abi/UniswapV2Router02.json";
 
 const Swap: React.FC = () => {
   const router = useRouter();
@@ -19,13 +20,12 @@ const Swap: React.FC = () => {
 
   const [payCoin, setPayCoin] = useState("ETH");
   const [receiveCoin, setReceiveCoin] = useState("XDC");
-  const [tokenA, settokenA] = useState(0);
+  const [tokenA, settokenA] = useState(0); 
   const [tokenB, settokenB] = useState(0);
   const [showPayModal, setShowPayModal] = useState(false);
   const [showReceiveModal, setShowReceiveModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCoins, setFilteredCoins] = useState<string[]>([]);
-
   const [maxSlippage, setMaxSlippage] = useState<bigint>(0);
   const [transactionDeadline, setTransactionDeadline] = useState<bigint>();
 
@@ -45,7 +45,13 @@ const Swap: React.FC = () => {
     transform: "rotate(90deg)",
   };
 
-  const availableCoins = ["ETH", "XDC", "BTC", "ADA", "DOGE"];
+  const addresses = [
+    "0x8Ef01C8a344fb9996d919Be082C6632f8383dA2d",
+    "0xe99500ab4a413164da49af83b9824749059b46ce",
+  ];
+  abi
+  
+  const availableCoins = ["ETH", "wXDC"];
 
   const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
 
@@ -53,13 +59,7 @@ const Swap: React.FC = () => {
     switch (coin) {
       case "ETH":
         return "ethereum.png";
-      case "BTC":
-        return "bitcoin.png";
-      case "ADA":
-        return "ada.png";
-      case "DOGE":
-        return "dogecoin.png";
-      case "XDC":
+      case "wXDC":
         return "xdc.png";
       default:
         return "";
@@ -261,7 +261,7 @@ const Swap: React.FC = () => {
             <br></br>
           </div>
           {mounted && account.isConnected ? (
-            <button className={styles.swapButton}>Swap</button>
+            <button className={styles.swapButton}>Add liquidity</button>
           ) : (
             <button className={styles.swapButtonDisb}>Connect wallet</button>
           )}
