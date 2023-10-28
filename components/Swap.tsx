@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useAccount, useNetwork } from "wagmi";
-import UnifiedNavbar from "./UnifiedNavbar";
 import styles from "../assets/styles/Swap.module.css";
 import useIsMounted from "./hooks/useIsMounted";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

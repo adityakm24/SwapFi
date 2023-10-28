@@ -28,7 +28,7 @@ const Pools: React.FC = () => {
       </div>
       <div className={styles.rectangle}>
         <p className={styles.centeredText}>
-          Your active V3 liquidity positions will appear here.
+          Your active V2 liquidity positions will appear here.
         </p>
       </div>
     </div>

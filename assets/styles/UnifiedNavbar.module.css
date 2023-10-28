@@ -7,7 +7,7 @@
   border-radius: 20px;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.116); /* Adjust the alpha value (0.5 in this example) for your desired level of transparency */
+  background-color: rgba(255, 255, 255, 0.144); /* Adjust the alpha value (0.5 in this example) for your desired level of transparency */
   margin: 0.9rem;
 }
 
@@ -35,7 +35,7 @@
 
 .links li {
   margin-right: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
   font-style: initial;
   padding-right: 10px;
   width: 80px;
@@ -44,8 +44,10 @@
 
 .links li a {
   transition: 0.3s; 
-  color: rgb(97, 97, 97); 
+  color: rgb(234, 234, 234); 
   padding: 7px; 
+  padding-left: 15px;
+  padding-right: 15px;
   border-radius: 5px; 
   text-decoration: none;
   align-items: center;
@@ -53,7 +55,7 @@
 }
 
 .links li a:hover {
-  background-color: rgba(182, 74, 221, 0.563);
+  background-color: rgba(39, 63, 157, 0.07);
   border-radius: 10px;
   color: #ffffff;
   box-shadow: -2px 0px 10px -5px rgba(183,74,221,1);
@@ -74,8 +76,8 @@
 
 .links1 li {
   margin-right: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-style: initial;
+   font-weight: 500;
+    font-style: initial;
   padding-right: 10px;
   width: 80px;
   margin: 1 auto;
@@ -85,6 +87,8 @@
   transition: 0.3s; 
   color: rgb(97, 97, 97); 
   padding: 7px; 
+  padding-left: 15px;
+  padding-right: 15px;
   border-radius: 5px; 
   text-decoration: none;
   align-items: center;
@@ -92,10 +96,10 @@
 }
 
 .links1 li a:hover {
-  background-color: rgba(182, 74, 221, 0.563);
+  background-color: rgba(39, 63, 157, 0.07);
   border-radius: 10px;
   color: #ffffff;
-  box-shadow: -2px 0px 10px -5px rgba(183,74,221,1);
+  box-shadow: -2px 0px 10px -5px rgba(182, 74, 221, 0.563);
   -webkit-box-shadow: -2px 0px 32px -2px rgba(182, 74, 221, 0.633);
   -moz-box-shadow: -2px 0px 32px -2px rgba(183,74,221,1);
   transition: all 0.5s ease; 

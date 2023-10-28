@@ -181,8 +181,10 @@
   margin-bottom: 20px;
   font-size: 1.2em;
   border-radius: 10px;
-  background: linear-gradient(13deg, rgba(91,39,236,0.8435968137254902) 0%, rgba(185,32,169,0.4710477941176471) 100%);
-  color: rgb(255, 255, 255);
+  background-color: #8EC5FC;
+background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+
+  color: rgb(213, 213, 213);
   border: 0px solid #19b1cc00;
   box-shadow: 0 0px 15px 0 #663566;
   Opacity:0.8;
@@ -267,7 +269,7 @@
 .ExButton {
   background: #323232;
   border: 2px;
-  border-radius: 100%;
+  border-radius: 50%;
   padding: 10px;
   font-size: 20px;
   color: white;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../public/Swap-removebg.png";
+import Logo from "../public/logo.png";
 import styles from "../assets/styles/UnifiedNavbar.module.css";
 import useIsMounted from "./hooks/useIsMounted";
 import { useAccount, useNetwork } from "wagmi";
@@ -52,9 +52,8 @@ const UnifiedNavbar = () => {
           </li>
           <li>
             <Link
-              href="https://onramp.money/app/?appId=1"
-              className={router.pathname === "" ? styles.activeLink : ""}
-              target="_blank"
+              href="/buy"
+              className={router.pathname === "/buy" ? styles.activeLink : ""}
             >
               Buy
             </Link>
@@ -88,9 +87,12 @@ const UnifiedNavbar = () => {
           </li>
           <li>
             <Link
-              href="https://onramp.money/app/?appId=1"
-              className={router.pathname === "" ? styles.activeLink : ""}
-              target="_blank"
+              href="./buy"
+              className={
+                router.pathname === "./buy"
+                  ? styles.activeLink
+                  : ""
+              }
             >
               Buy
             </Link>
