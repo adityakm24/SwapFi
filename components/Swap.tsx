@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useContractWrite, usePrepareContractWrite } from 'wagmi';
 import { useRouter } from "next/router";
 import { useAccount, useNetwork } from "wagmi";
 import UnifiedNavbar from "./UnifiedNavbar";
@@ -6,6 +7,7 @@ import styles from "../assets/styles/Swap.module.css";
 import useIsMounted from "./hooks/useIsMounted";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faGear, faSearch, faExchangeAlt } from "@fortawesome/free-solid-svg-icons"; // Import the swap icon.
+import uniswapv2Router from "./abi/UniswapV2Router02.json";
 
 const Swap: React.FC = () => {
   const router = useRouter();
@@ -78,7 +80,25 @@ const Swap: React.FC = () => {
         return "";
     }
   };
-  
+  const {config:swapTokens,error:swapTokensError} = usePrepareContractWrite({
+    address: '0xE72F49482Bec79A6b16d5727A51D97EdCe2E7Ba9',
+    abi: uniswapv2Router.abi,
+    functionName: 'swapExactTokensForTokens',
+    chainId: 51,
+    args: [
+      "0x6c726338Df61492f0e30F87CbA7EB111C69D3474",
+      "0xe99500ab4a413164da49af83b9824749059b46ce",
+      tokenAS,
+      tokenBS,
+      tokenAS,
+      tokenBS,
+      account.address,
+      BigInt(1699537124)
+    ],
+    onSettled(data,error){
+      console.log('addLiquidity',{data,error})
+    }
+  })
 
   useEffect(() => {
     setFilteredCoins(
