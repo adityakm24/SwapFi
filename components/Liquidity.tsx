@@ -66,7 +66,7 @@ const Swap: React.FC = () => {
       case "wXDC":
         return "xdc.png";
       default:
-        return "";
+        return "xdc.png";
     }
   };
 
