@@ -111,7 +111,9 @@ const{data:quoteData,isError:quoteError,isLoading:quoteLoading} = useContractRea
 })
 
 
-
+if(quoteData){
+  console.log(quoteData)
+}
 
 
 
