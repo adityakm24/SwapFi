@@ -95,6 +95,8 @@ const handleTransactionDeadlineChange = (
       console.log('addLiquidity',{data,error})
     }
   })
+
+  
   const { write: addLiquidity, isLoading: isaddLiquidityLoading, data: addLiquidityData, isSuccess: addLiquiditySuccess } = useContractWrite(addLiquidityConfig);
 
   const addLiquidityFunction = () => {

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { useContractWrite, usePrepareContractWrite } from 'wagmi';
+import { useContractRead } from 'wagmi'
+
 import { useAccount, useNetwork } from "wagmi";
 import UnifiedNavbar from "./UnifiedNavbar";
 import styles from "../assets/styles/Swap.module.css";
@@ -11,6 +14,8 @@ import {
   faSearch,
   faExchangeAlt,
 } from "@fortawesome/free-solid-svg-icons"; // Import the swap icon.
+import uniswapv2Router from "./abi/UniswapV2Router02.json";
+import UniswapV2Pair from "./abi/UniswapV2Pair.json"
 
 const Swap: React.FC = () => {
   const router = useRouter();
@@ -27,8 +32,10 @@ const Swap: React.FC = () => {
   const [showReceiveModal, setShowReceiveModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCoins, setFilteredCoins] = useState<string[]>([]);
+  const [reserveData,setReserveData] = useState<BigInt[]>([])
+  const[quote,setquote] = useState<BigInt>(BigInt(0))
 
-  const [maxSlippage, setMaxSlippage] = useState<bigint>(0);
+  const [maxSlippage, setMaxSlippage] = useState<bigint>(BigInt(0));
   const [transactionDeadline, setTransactionDeadline] = useState<bigint>();
   const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
   const handleMaxSlippageChange = (e) => {
@@ -54,6 +61,59 @@ const Swap: React.FC = () => {
   const closeSettingsDropdown = () => {
     setShowSettingsDropdown(false);
   };
+  const {config:swapConfig,error:swapError} = usePrepareContractWrite({
+    address: '0xE72F49482Bec79A6b16d5727A51D97EdCe2E7Ba9',
+    abi: uniswapv2Router.abi,
+    functionName: 'swapExactTokensForTokens',
+    chainId: 51,
+    args: [payValueS,BigInt(0),["0x6c726338Df61492f0e30F87CbA7EB111C69D3474","0xe99500ab4a413164da49af83b9824749059b46ce"],account.address,BigInt(1798556759)],
+    onSettled(data,error){
+      console.log('addLiquidity',{data,error})
+    }
+  })
+
+  const { write: swapToken, isLoading: swapTokensLoading, data: swapTokensData, isSuccess: swapTokensSuccess } = useContractWrite(swapConfig);
+  
+  const swapTokens = () => {
+    console.log("inside add add liquidity");
+    if (swapToken !== undefined) {
+      swapToken();
+      console.log("adrer add liquidity");
+    }
+  };
+
+  //get reserves from the pair 
+
+  const{data:reservesData,isError:reservesError,isLoading:reservesLoading} = useContractRead({
+    address:'0xCC87c4291fcd59788CE565968068714D4bEfb057',
+    abi:UniswapV2Pair.abi,
+    functionName:'getReserves'
+  })
+
+  
+
+useEffect(()=>{
+  console.log(reservesData)
+
+  if(reservesData){
+  const array = Object.values(reservesData)
+  setReserveData(array)}
+},[reservesData])
+
+//get quote using reserves 
+
+
+const{data:quoteData,isError:quoteError,isLoading:quoteLoading} = useContractRead({
+  address:'0xE72F49482Bec79A6b16d5727A51D97EdCe2E7Ba9',
+  abi:uniswapv2Router.abi,
+  functionName:'quote',
+  args:[payValueS,reserveData[0],reserveData[1]]
+})
+
+
+
+
+
 
   const availableCoins = ["MCK", "XDC", "BTC", "ADA", "DOGE"];
 
@@ -258,7 +318,7 @@ const Swap: React.FC = () => {
             <br></br>
           </div>
           {mounted && account.isConnected ? (
-            <button className={styles.swapButton}>Swap</button>
+            <button className={styles.swapButton} onClick={swapTokens}>Swap</button>
           ) : (
             <button className={styles.swapButtonDisb}>Connect wallet</button>
           )}
