@@ -25,8 +25,8 @@ const Swap: React.FC = () => {
   const [receiveCoin, setReceiveCoin] = useState("XDC");
   const [tokenA, setTokenA] = useState(''); 
   const [tokenB, setTokenB] = useState('');
-  const [tokenAS, setTokenAS] = useState("");
-  const [tokenBS, setTokenBS] = useState("");
+  const [tokenAS, setTokenAS] = useState<BigInt>(BigInt(0));
+  const [tokenBS, setTokenBS] = useState<BigInt>(BigInt(0));
   const [showPayModal, setShowPayModal] = useState(false);
   const [showReceiveModal, setShowReceiveModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -82,10 +82,10 @@ const Swap: React.FC = () => {
     args: [
       "0x6c726338Df61492f0e30F87CbA7EB111C69D3474",
       "0xe99500ab4a413164da49af83b9824749059b46ce",
-      BigInt(100000000000000000000),
-      BigInt(100000000000000000000),
-      (BigInt(100000000000000000000)),
-      (BigInt(100000000000000000000)),
+      tokenAS,
+      tokenBS,
+      tokenAS,
+      tokenBS,
       account.address,
       BigInt(1699537124)
     ],
