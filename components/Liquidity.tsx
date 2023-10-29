@@ -23,8 +23,8 @@ const Swap: React.FC = () => {
 
   const [payCoin, setPayCoin] = useState("ETH");
   const [receiveCoin, setReceiveCoin] = useState("XDC");
-  const [tokenA, settokenA] = useState(0); 
-  const [tokenB, settokenB] = useState(0);
+  const [tokenA, settokenA] = useState(''); 
+  const [tokenB, settokenB] = useState('');
   const [showPayModal, setShowPayModal] = useState(false);
   const [showReceiveModal, setShowReceiveModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -78,7 +78,7 @@ const Swap: React.FC = () => {
 
   
   const {config:addLiquidityConfig,error:addLiquidityError} = usePrepareContractWrite({
-      address:'0xd0dA942D7F6d28a4983f07035c2B5F7Ec49c0f45',
+      address:'0xE72F49482Bec79A6b16d5727A51D97EdCe2E7Ba9',
       abi:uniswapv2Router.abi,
       functionName:'addLiquidity',
       chainId:51,
@@ -92,7 +92,7 @@ const Swap: React.FC = () => {
     data:addLiquidityData,
     isSuccess:addLiquiditySuccess} = useContractWrite(addLiquidityConfig)
 
-
+    console.log(tokenA)
 
 
 
@@ -198,7 +198,7 @@ const Swap: React.FC = () => {
               <div className={styles.swapsection}>
                 <div className={styles.payinput}>
                   <input
-                    type="number"
+                    type="text"
                     placeholder="0"
                     value={tokenA}
                     onChange={(e) => settokenA(parseFloat(e.target.value))}
@@ -242,7 +242,7 @@ const Swap: React.FC = () => {
               <div className={styles.swapsection}>
                 <div className={styles.receiveinput}>
                   <input
-                    type="number"
+                    type="text"
                     placeholder="0"
                     value={tokenB}
                     onChange={(e) => settokenB(parseFloat(e.target.value))}
