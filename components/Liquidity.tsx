@@ -1,5 +1,8 @@
+//@todo: force the user to connect wallet 
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from "react";
+import { useContractWrite, usePrepareContractWrite } from 'wagmi'
+
 import { useRouter } from "next/router";
 import { useAccount, useNetwork } from "wagmi";
 import styles from "../assets/styles/Liquidity.module.css";
@@ -11,7 +14,7 @@ import {
   faSearch,
   faExchangeAlt,
 } from "@fortawesome/free-solid-svg-icons";
-  import abi from "./abi/UniswapV2Router02.json";
+  import uniswapv2Router from "./abi/UniswapV2Router02.json";
 
 const Swap: React.FC = () => {
   const router = useRouter();
@@ -26,7 +29,7 @@ const Swap: React.FC = () => {
   const [showReceiveModal, setShowReceiveModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCoins, setFilteredCoins] = useState<string[]>([]);
-  const [maxSlippage, setMaxSlippage] = useState<bigint>(0);
+  const [maxSlippage, setMaxSlippage] = useState<bigint>(BigInt(0));
   const [transactionDeadline, setTransactionDeadline] = useState<bigint>();
 
   const handleMaxSlippageChange = (e) => {
@@ -49,7 +52,7 @@ const Swap: React.FC = () => {
     "0x8Ef01C8a344fb9996d919Be082C6632f8383dA2d",
     "0xe99500ab4a413164da49af83b9824749059b46ce",
   ];
-  abi
+
   
   const availableCoins = ["ETH", "wXDC"];
 
@@ -70,6 +73,38 @@ const Swap: React.FC = () => {
     setShowSettingsDropdown(true);
   };
 
+  
+
+
+  
+  const {config:addLiquidityConfig,error:addLiquidityError} = usePrepareContractWrite({
+      address:'0x945bEa50A15999e30a848c1A98dc7bd1D595d8b2',
+      abi:uniswapv2Router.abi,
+      functionName:'addLiquidity',
+      chainId:51,
+      args: ["0x6c726338Df61492f0e30F87CbA7EB111C69D3474","0xe99500ab4a413164da49af83b9824749059b46ce",BigInt(100000000000000000000),BigInt(100000000000000000000),(BigInt(100000000000000000000)),(BigInt(100000000000000000000)),account.address,BigInt(1699537124)],
+      onSettled(data,error){
+        console.log('addLiquidity',{data,error})
+      }
+  })
+  const{write: addLiquidity,
+    isLoading:isaddLiquidityLoading,
+    data:addLiquidityData,
+    isSuccess:addLiquiditySuccess} = useContractWrite(addLiquidityConfig)
+
+
+
+
+
+  const addLiqudityFunction = () => {
+    console.log("inside add add liquidity")
+    if(addLiquidity!=undefined){
+
+      addLiquidity()
+
+      console.log("adrer add liquidity")
+    }
+  }
   const closeSettingsDropdown = () => {
     setShowSettingsDropdown(false);
   };
@@ -261,7 +296,7 @@ const Swap: React.FC = () => {
             <br></br>
           </div>
           {mounted && account.isConnected ? (
-            <button className={styles.swapButton}>Add liquidity</button>
+            <button className={styles.swapButton} onClick={addLiqudityFunction}>Add liquidity</button>
           ) : (
             <button className={styles.swapButtonDisb}>Connect wallet</button>
           )}
