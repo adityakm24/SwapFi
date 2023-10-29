@@ -33,14 +33,16 @@ const Swap: React.FC = () => {
   const [filteredCoins, setFilteredCoins] = useState<string[]>([]);
   const [maxSlippage, setMaxSlippage] = useState<bigint>(BigInt(0));
   const [transactionDeadline, setTransactionDeadline] = useState<bigint>();
+const handleMaxSlippageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setMaxSlippage(e.target.value);
+};
 
-  const handleMaxSlippageChange = (e) => {
-    setMaxSlippage(e.target.value);
-  };
+const handleTransactionDeadlineChange = (
+  e: React.ChangeEvent<HTMLInputElement>
+) => {
+  setTransactionDeadline(e.target.value);
+};
 
-  const handleTransactionDeadlineChange = (e) => {
-    setTransactionDeadline(e.target.value);
-  };
 
   const closeModal = () => {
     setShowPayModal(false);
