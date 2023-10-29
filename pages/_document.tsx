@@ -7,7 +7,6 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="icon" href="tabicon.png" />
-          <title>SwapFi</title>
         </Head>
         <body>
           <Main />
