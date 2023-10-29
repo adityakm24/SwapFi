@@ -22,11 +22,11 @@ import { publicProvider } from 'wagmi/providers/public';
 import { http } from "viem";
 
 const { chains, publicClient } = configureChains(
-  [xdc,xdcTestnet],
+  [xdcTestnet],
   [
     jsonRpcProvider({
       rpc: () => ({
-        http: "https://rpc.xinfin.network",
+        http: "https://erpc.apothem.network",
       }),
     }),
   ],

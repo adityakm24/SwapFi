@@ -52,12 +52,15 @@
   .rectangle {
     width: 900px;
     height: 250px;
-    background-color: transparent;
+    background-color: black;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid gray;
     border-radius: 8px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border:2px solid rgba(255, 255, 255, 0.18);
   }
   
   .centeredText {
