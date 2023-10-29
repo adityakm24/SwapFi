@@ -21,7 +21,7 @@ const Swap: React.FC = () => {
   const mounted = useIsMounted();
   const account = useAccount();
 
-  const [payCoin, setPayCoin] = useState("ETH");
+  const [payCoin, setPayCoin] = useState("MCK");
   const [receiveCoin, setReceiveCoin] = useState("XDC");
   const [tokenA, setTokenA] = useState(''); 
   const [tokenB, setTokenB] = useState('');
@@ -57,13 +57,13 @@ const handleTransactionDeadlineChange = (
     "0xe99500ab4a413164da49af83b9824749059b46ce",
   ];
 
-  const availableCoins = ["ETH", "wXDC"];
+  const availableCoins = ["MCK", "wXDC"];
 
   const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
 
   const getIconForCoin = (coin: string) => {
     switch (coin) {
-      case "ETH":
+      case "MCK":
         return "ethereum.png";
       case "wXDC":
         return "xdc.png";
@@ -296,11 +296,11 @@ const handleTransactionDeadlineChange = (
                 <div className={styles.boxContainer}>
                   <div className={styles.box}>
                     <p className={styles.boxTextTop}>6210.39</p>
-                    <p className={styles.boxTextBottom}>1INCH per ETH</p>
+                    <p className={styles.boxTextBottom}>1INCH per MCK</p>
                   </div>
                   <div className={styles.box}>
                     <p className={styles.boxTextTop}>0.00016102</p>
-                    <p className={styles.boxTextBottom}>ETH per 1INCH</p>
+                    <p className={styles.boxTextBottom}>MCK per 1INCH</p>
                   </div>
                   <div className={styles.box}>
                     <p className={styles.boxTextTop}>2.68%</p>

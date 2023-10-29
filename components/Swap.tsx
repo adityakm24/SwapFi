@@ -17,7 +17,7 @@ const Swap: React.FC = () => {
   const mounted = useIsMounted();
   const account = useAccount();
 
-  const [payCoin, setPayCoin] = useState("ETH");
+  const [payCoin, setPayCoin] = useState("MCK");
   const [receiveCoin, setReceiveCoin] = useState("XDC");
   const [payValue, setPayValue] = useState("");
   const [receiveValue, setReceiveValue] = useState("");
@@ -55,7 +55,7 @@ const Swap: React.FC = () => {
     setShowSettingsDropdown(false);
   };
 
-  const availableCoins = ["ETH", "XDC", "BTC", "ADA", "DOGE"];
+  const availableCoins = ["MCK", "XDC", "BTC", "ADA", "DOGE"];
 
   const swapCoins = () => {
     const tempPayCoin = payCoin;
@@ -68,7 +68,7 @@ const Swap: React.FC = () => {
 
   const getIconForCoin = (coin: string) => {
     switch (coin) {
-      case "ETH":
+      case "MCK":
         return "ethereum.png";
       case "BTC":
         return "bitcoin.png";
