@@ -1,24 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { useContractWrite, usePrepareContractWrite } from 'wagmi';
 import { useRouter } from "next/router";
 import { useAccount, useNetwork } from "wagmi";
 import UnifiedNavbar from "./UnifiedNavbar";
 import styles from "../assets/styles/Swap.module.css";
 import useIsMounted from "./hooks/useIsMounted";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose, faGear, faSearch, faExchangeAlt } from "@fortawesome/free-solid-svg-icons"; // Import the swap icon.
-import uniswapv2Router from "./abi/UniswapV2Router02.json";
+import {
+  faClose,
+  faGear,
+  faSearch,
+  faExchangeAlt,
+} from "@fortawesome/free-solid-svg-icons"; // Import the swap icon.
 
 const Swap: React.FC = () => {
   const router = useRouter();
   const mounted = useIsMounted();
   const account = useAccount();
-  
 
   const [payCoin, setPayCoin] = useState("ETH");
   const [receiveCoin, setReceiveCoin] = useState("XDC");
-  const [payValue, setPayValue] = useState(0);
-  const [receiveValue, setReceiveValue] = useState(0);
+  const [payValue, setPayValue] = useState("");
+  const [receiveValue, setReceiveValue] = useState("");
+  const [payValueS, setpayValueS] = useState<BigInt>(BigInt(0));
+  const [receiveValueS, setreceiveValueS] = useState<BigInt>(BigInt(0));
   const [showPayModal, setShowPayModal] = useState(false);
   const [showReceiveModal, setShowReceiveModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,7 +39,6 @@ const Swap: React.FC = () => {
     setTransactionDeadline(e.target.value);
   };
 
-    
   const closeModal = () => {
     setShowPayModal(false);
     setShowReceiveModal(false);
@@ -44,7 +47,6 @@ const Swap: React.FC = () => {
     transform: "rotate(90deg)",
   };
 
-    
   const openSettingsDropdown = () => {
     setShowSettingsDropdown(true);
   };
@@ -67,38 +69,19 @@ const Swap: React.FC = () => {
   const getIconForCoin = (coin: string) => {
     switch (coin) {
       case "ETH":
-        return "ethereum.png"; 
+        return "ethereum.png";
       case "BTC":
-        return "bitcoin.png"; 
+        return "bitcoin.png";
       case "ADA":
-        return "ada.png"; 
+        return "ada.png";
       case "DOGE":
-        return "dogecoin.png"; 
+        return "dogecoin.png";
       case "XDC":
         return "xdc.png";
       default:
         return "";
     }
   };
-  const {config:swapTokens,error:swapTokensError} = usePrepareContractWrite({
-    address: '0xE72F49482Bec79A6b16d5727A51D97EdCe2E7Ba9',
-    abi: uniswapv2Router.abi,
-    functionName: 'swapExactTokensForTokens',
-    chainId: 51,
-    args: [
-      "0x6c726338Df61492f0e30F87CbA7EB111C69D3474",
-      "0xe99500ab4a413164da49af83b9824749059b46ce",
-      tokenAS,
-      tokenBS,
-      tokenAS,
-      tokenBS,
-      account.address,
-      BigInt(1699537124)
-    ],
-    onSettled(data,error){
-      console.log('addLiquidity',{data,error})
-    }
-  })
 
   useEffect(() => {
     setFilteredCoins(
@@ -107,6 +90,22 @@ const Swap: React.FC = () => {
       )
     );
   }, [searchTerm]);
+
+  useEffect(() => {
+    if (payValue !== "") {
+      // Convert the string value to BigInt and perform the calculation
+      const payValueBigInt = BigInt(payValue);
+      setpayValueS(payValueBigInt * BigInt(10 ** 18));
+    }
+  }, [payValue]);
+
+  useEffect(() => {
+    if (receiveValue !== "") {
+      // Convert the string value to BigInt and perform the calculation
+      const receiveValueBigInt = BigInt(receiveValue);
+      setreceiveValueS(receiveValueBigInt * BigInt(10 ** 18));
+    }
+  }, [receiveValue]);
 
   return (
     <div className={styles.swapcontainer}>
@@ -181,7 +180,7 @@ const Swap: React.FC = () => {
                 <label>You pay</label>
                 <div className={styles.payinput}>
                   <input
-                    type="number"
+                    type="text"
                     placeholder="0"
                     value={payValue}
                     onChange={(e) => setPayValue(parseFloat(e.target.value))}
@@ -223,7 +222,7 @@ const Swap: React.FC = () => {
                 <label>You receive</label>
                 <div className={styles.receiveinput}>
                   <input
-                    type="number"
+                    type="text"
                     placeholder="0"
                     value={receiveValue}
                     onChange={(e) =>
