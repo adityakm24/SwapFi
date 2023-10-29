@@ -100,7 +100,7 @@ const UnifiedNavbar = () => {
         </ul>
       )}
       <div className={styles.button}>
-        <ConnectButton showBalance={false} />
+        <ConnectButton showBalance={false}  />
       </div>
     </nav>
   );

@@ -1,37 +1,20 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Head from "next/head";
-import UnifiedNavbar from "./UnifiedNavbar";
+import styles from "../assets/styles/Buy.module.css";
 
 const IndexPage = () => {
-useEffect(() => {
-const loadWidget = () => {
-return new Promise((resolve) => {
-const script = document.createElement("script");
-script.src = "https://stg.platform.onmeta.in/onmeta-sdk.js";
-script.onload = resolve;
-document.body.appendChild(script);
-});
-};
-loadWidget().then(() => {
-  const createWidget = new onMetaWidget({
-    elementId: "widget",
-    apiKey: "0c73fa12-8923-4740-8a14-cb78b178b12c",
-  });
-  createWidget.init();
-  createWidget.on("ALL_EVENTS", (status: any) => console.log(status));
-});
-}, []); // Ensure this code only runs on the client side
-
-return (
-<div>
-<Head>
-<title>SwapFi- Buy Crypto</title>
-</Head>
-<noscript>You need to enable JavaScript to run this app.</noscript>
-<div id="root"></div>
-<div id="widget"></div>
-</div>
-);
+  return (
+    <div className={styles.main}>
+      <Head>
+        <title>SwapFi- Buy Crypto</title>
+      </Head>
+      <iframe
+        src="https://buy-page.vercel.app/"
+        title="Buy Crypto"
+        className={styles["custom-iframe"]} 
+      ></iframe>
+    </div>
+  );
 };
 
 export default IndexPage;
