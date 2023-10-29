@@ -1,8 +1,7 @@
 //@todo: force the user to connect wallet 
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from "react";
-import { useContractWrite, usePrepareContractWrite } from 'wagmi'
-
+import { useContractWrite, usePrepareContractWrite } from 'wagmi';
 import { useRouter } from "next/router";
 import { useAccount, useNetwork } from "wagmi";
 import styles from "../assets/styles/Liquidity.module.css";
@@ -16,6 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
   import uniswapv2Router from "./abi/UniswapV2Router02.json";
 
+
 const Swap: React.FC = () => {
   const router = useRouter();
   const mounted = useIsMounted();
@@ -23,8 +23,10 @@ const Swap: React.FC = () => {
 
   const [payCoin, setPayCoin] = useState("ETH");
   const [receiveCoin, setReceiveCoin] = useState("XDC");
-  const [tokenA, settokenA] = useState(''); 
-  const [tokenB, settokenB] = useState('');
+  const [tokenA, setTokenA] = useState(''); 
+  const [tokenB, setTokenB] = useState('');
+  const [tokenAS, setTokenAS] = useState("");
+  const [tokenBS, setTokenBS] = useState("");
   const [showPayModal, setShowPayModal] = useState(false);
   const [showReceiveModal, setShowReceiveModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -53,7 +55,6 @@ const Swap: React.FC = () => {
     "0xe99500ab4a413164da49af83b9824749059b46ce",
   ];
 
-  
   const availableCoins = ["ETH", "wXDC"];
 
   const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
@@ -73,38 +74,35 @@ const Swap: React.FC = () => {
     setShowSettingsDropdown(true);
   };
 
-  
-
-
-  
   const {config:addLiquidityConfig,error:addLiquidityError} = usePrepareContractWrite({
-      address:'0xE72F49482Bec79A6b16d5727A51D97EdCe2E7Ba9',
-      abi:uniswapv2Router.abi,
-      functionName:'addLiquidity',
-      chainId:51,
-      args: ["0x6c726338Df61492f0e30F87CbA7EB111C69D3474","0xe99500ab4a413164da49af83b9824749059b46ce",BigInt(100000000000000000000),BigInt(100000000000000000000),(BigInt(100000000000000000000)),(BigInt(100000000000000000000)),account.address,BigInt(1699537124)],
-      onSettled(data,error){
-        console.log('addLiquidity',{data,error})
-      }
-  })
-  const{write: addLiquidity,
-    isLoading:isaddLiquidityLoading,
-    data:addLiquidityData,
-    isSuccess:addLiquiditySuccess} = useContractWrite(addLiquidityConfig)
-
-    console.log(tokenA)
-
-
-
-  const addLiqudityFunction = () => {
-    console.log("inside add add liquidity")
-    if(addLiquidity!=undefined){
-
-      addLiquidity()
-
-      console.log("adrer add liquidity")
+    address: '0xE72F49482Bec79A6b16d5727A51D97EdCe2E7Ba9',
+    abi: uniswapv2Router.abi,
+    functionName: 'addLiquidity',
+    chainId: 51,
+    args: [
+      "0x6c726338Df61492f0e30F87CbA7EB111C69D3474",
+      "0xe99500ab4a413164da49af83b9824749059b46ce",
+      BigInt(100000000000000000000),
+      BigInt(100000000000000000000),
+      (BigInt(100000000000000000000)),
+      (BigInt(100000000000000000000)),
+      account.address,
+      BigInt(1699537124)
+    ],
+    onSettled(data,error){
+      console.log('addLiquidity',{data,error})
     }
-  }
+  })
+  const { write: addLiquidity, isLoading: isaddLiquidityLoading, data: addLiquidityData, isSuccess: addLiquiditySuccess } = useContractWrite(addLiquidityConfig);
+
+  const addLiquidityFunction = () => {
+    console.log("inside add add liquidity");
+    if (addLiquidity !== undefined) {
+      addLiquidity();
+      console.log("adrer add liquidity");
+    }
+  };
+
   const closeSettingsDropdown = () => {
     setShowSettingsDropdown(false);
   };
@@ -114,8 +112,8 @@ const Swap: React.FC = () => {
     const temptokenA = tokenA;
     setPayCoin(receiveCoin);
     setReceiveCoin(tempPayCoin);
-    settokenA(tokenB);
-    settokenB(temptokenA);
+    setTokenA(tokenB);
+    setTokenB(temptokenA);
   };
 
   useEffect(() => {
@@ -126,13 +124,31 @@ const Swap: React.FC = () => {
     );
   }, [searchTerm]);
 
+  useEffect(() => {
+    if (tokenA !== '') {
+      // Convert the string value to BigInt and perform the calculation
+      const tokenABigInt = BigInt(tokenA);
+      setTokenAS((tokenABigInt * BigInt(10 ** 18)));
+    }
+  }, [tokenA]);
+
+    useEffect(() => {
+      if (tokenB !== "") {
+        // Convert the string value to BigInt and perform the calculation
+        const tokenABigInt = BigInt(tokenB);
+        setTokenBS((tokenABigInt * BigInt(10 ** 18)));
+      }
+    }, [tokenB]);
+  
+
+
   return (
     <div className={styles.swapcontainer}>
       <div className={styles.swappanel}>
         <div className={styles.swapheader}>
           <button className={styles.heading}>Add liquidity</button>
           <button className={styles.iconbtn}>
-            <p onClick={openSettingsDropdown}>{maxSlippage}% Slipage</p>
+            <p onClick={openSettingsDropdown}>{maxSlippage}% Slippage</p>
             <FontAwesomeIcon icon={faGear} onClick={openSettingsDropdown} />
           </button>
         </div>
@@ -201,7 +217,7 @@ const Swap: React.FC = () => {
                     type="text"
                     placeholder="0"
                     value={tokenA}
-                    onChange={(e) => settokenA(parseFloat(e.target.value))}
+                    onChange={(e) => setTokenA(e.target.value)}
                   />
                   <button
                     className={styles.paycoin}
@@ -245,7 +261,7 @@ const Swap: React.FC = () => {
                     type="text"
                     placeholder="0"
                     value={tokenB}
-                    onChange={(e) => settokenB(parseFloat(e.target.value))}
+                    onChange={(e) => setTokenB(e.target.value)}
                   />
                   <button onClick={() => setShowReceiveModal(true)}>
                     <div
@@ -296,7 +312,7 @@ const Swap: React.FC = () => {
             <br></br>
           </div>
           {mounted && account.isConnected ? (
-            <button className={styles.swapButton} onClick={addLiqudityFunction}>Add liquidity</button>
+            <button className={styles.swapButton} onClick={addLiquidityFunction}>Add liquidity</button>
           ) : (
             <button className={styles.swapButtonDisb}>Connect wallet</button>
           )}
@@ -309,12 +325,12 @@ const Swap: React.FC = () => {
             <button className={styles.closebutton} onClick={closeModal}>
               <FontAwesomeIcon icon={faClose} />
             </button>
+            <br></br>
             <input
               type="text"
               placeholder="Search for a coin"
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-
             {filteredCoins
               .filter((coin) => coin !== receiveCoin)
               .map((coin) => (
@@ -348,6 +364,7 @@ const Swap: React.FC = () => {
             <button className={styles.closebutton} onClick={closeModal}>
               <FontAwesomeIcon icon={faClose} />
             </button>
+            <br></br>
             <input
               type="text"
               placeholder="Search for a coin"
